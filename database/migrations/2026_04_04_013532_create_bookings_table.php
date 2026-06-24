@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             
             // Relasi ke tabel users (Customer)
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');
+            $table->string('customer')->nullable();
             
             // Kode identifikasi booking (dipakai di pencarian & relasi claim)
             $table->string('kode_booking')->nullable(); // Menampung 'kode_booking' dari BookingController
@@ -34,10 +35,11 @@ return new class extends Migration
             // Penjadwalan Waktu Booking
             $table->date('tanggal_booking')->nullable();
             $table->time('jam_booking')->nullable();
+            $table->timestamp('tanggal_masuk')->nullable();
             
             // Alur Status Operasional Bengkel
-            $table->enum('status', ['Pending', 'Diterima', 'Diproses', 'Selesai', 'Dibatalkan'])
-                  ->default('Pending');
+            $table->enum('status', ['pending', 'diterima', 'proses', 'selesai', 'dibatalkan', 'tolak'])
+                  ->default('pending');
             $table->text('alasan_tolak')->nullable();
             
             // Keuangan & Pembayaran

@@ -16,6 +16,7 @@ return new class extends Migration
 
             $table->string('merk_kendaraan');
             $table->string('jenis_kendaraan');
+            $table->string('jenis_servis')->nullable();
 
             $table->text('keluhan');
 

@@ -12,16 +12,32 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-       \App\Models\User::updateOrCreate(
-    ['email' => 'admin@autoservis.com'],
-    [
-        'name' => 'Admin',
-        'password' => bcrypt('123456'),
-        'role' => 'admin'
-    ]
-);
-        $this->call(BookingSeeder::class);
+        // Jalankan UserSeeder terlebih dahulu
         $this->call(UserSeeder::class);
-         $this->call(UserSeeder::class);
+
+        // Jalankan BookingSeeder setelah user dibuat
+        $this->call(BookingSeeder::class);
+
+        // Jalankan TransaksiSeeder untuk menyemai laporan dan data keuangan
+        $this->call(TransaksiSeeder::class);
+
+        // Semai data layanan awal agar halaman beranda/dashboard terisi
+        \Illuminate\Support\Facades\DB::table('layanan')->insert([
+            [
+                'nama' => 'Alternator',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'nama' => 'Dinamo Starter',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'nama' => 'Kelistrikan',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ]);
     }
 }

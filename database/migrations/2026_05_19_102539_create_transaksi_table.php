@@ -20,8 +20,8 @@ return new class extends Migration
             $table->decimal('total_bayar', 12, 2)->default(0);
 
             $table->enum('metode', [
-                'cash',
-                'transfer'
+                'Cash',
+                'Transfer'
             ])->nullable();
 
             $table->enum('status_bayar', [

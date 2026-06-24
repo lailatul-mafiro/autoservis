@@ -25,7 +25,7 @@ class LaporanController extends Controller
                 'bookings.jenis_servis',
                 'transaksi.total_bayar as total'
             )
-            ->where('transaksi.status_bayar', 'Lunas')
+            ->where('transaksi.status_bayar', 'lunas')
             ->get();
 
         $dataWalkin = DB::table('transaksi_langsung')
@@ -50,7 +50,7 @@ class LaporanController extends Controller
         */
 
         $totalOnline = DB::table('transaksi')
-            ->where('status_bayar', 'Lunas')
+            ->where('status_bayar', 'lunas')
             ->sum('total_bayar');
 
         $totalWalkin = DB::table('transaksi_langsung')
@@ -67,7 +67,7 @@ class LaporanController extends Controller
 
         $jumlahTransaksi =
             DB::table('transaksi')
-                ->where('status_bayar', 'Lunas')
+                ->where('status_bayar', 'lunas')
                 ->count()
 
             +
@@ -84,7 +84,7 @@ class LaporanController extends Controller
 
         $grafikOnline = DB::table('transaksi')
             ->selectRaw('MONTH(created_at) as bulan, SUM(total_bayar) as total')
-            ->where('status_bayar', 'Lunas')
+            ->where('status_bayar', 'lunas')
             ->groupByRaw('MONTH(created_at)')
             ->pluck('total', 'bulan')
             ->toArray();

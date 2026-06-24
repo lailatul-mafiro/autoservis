@@ -15,6 +15,9 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');    
             
             // Kolom spesifik untuk kebutuhan klaim
+            $table->string('customer')->nullable();
+            $table->string('kode')->nullable();
+            $table->string('jenis_servis')->nullable();
             $table->text('keluhan');
             $table->string('status')->default('pending'); // pending, diterima, ditolak, selesai
             $table->text('catatan_admin')->nullable();

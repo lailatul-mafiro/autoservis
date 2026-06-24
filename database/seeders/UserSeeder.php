@@ -37,5 +37,44 @@ class UserSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+
+        User::create([
+            'name' => 'Lailatul',
+            'email' => 'lailatul@autoservis.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('customer123'),
+            'role' => 'customer',
+            'no_hp' => '081211112222',
+            'foto' => null,
+            'remember_token' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        User::create([
+            'name' => 'Budi',
+            'email' => 'budi@autoservis.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('customer123'),
+            'role' => 'customer',
+            'no_hp' => '081233334444',
+            'foto' => null,
+            'remember_token' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        User::create([
+            'name' => 'Andi',
+            'email' => 'andi@autoservis.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('customer123'),
+            'role' => 'customer',
+            'no_hp' => '081255556666',
+            'foto' => null,
+            'remember_token' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 }
